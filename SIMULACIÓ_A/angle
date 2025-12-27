@@ -4,7 +4,7 @@
   "metadata": {
     "colab": {
       "provenance": [],
-      "authorship_tag": "ABX9TyPRc+4UlVlLdDYNgd50COwy",
+      "authorship_tag": "ABX9TyPmLOomXrrhmk5vUW8VaXOE",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -33,7 +33,36 @@
         "id": "1gb52GWMwfqi"
       },
       "outputs": [],
-      "source": []
+      "source": [
+        "#trobem vector posició Sol-Terra\n",
+        "t0= 86400.0            # Temps característic= 1 dia\n",
+        "m0= m_sol              # Massa característica= massa del sol\n",
+        "r0= (G * t0**2 * m0)**(1/3)  # Radi característic\n",
+        "\n",
+        "from mpl_toolkits.mplot3d import Axes3D\n",
+        "x_st = r0 * (np.array(x_t) - np.array(x_s))\n",
+        "y_st = r0 * (np.array(y_t) - np.array(y_s))\n",
+        "z_st = r0 * (np.array(z_t) - np.array(z_s))\n",
+        "\n",
+        "print(x_t)\n",
+        "\n",
+        "print(x_s)\n",
+        "\"\"\"\n",
+        "fig = plt.figure(figsize=(9,9))\n",
+        "ax = fig.add_subplot(111, projection='3d')\n",
+        "ax.plot(x_st, y_st, z_st, label=\"Terra (Euler)\", color=\"limegreen\")\n",
+        "ax.plot(x_b,y_b,z_b, color=\"blue\")\n",
+        "plt.show()\n",
+        "\"\"\"\n",
+        "mod_t = np.sqrt(x_st**2 + y_st**2 + z_st**2)\n",
+        "mod_b = np.sqrt(x_b**2 + y_b**2 + z_b**2)\n",
+        "\n",
+        "\n",
+        "\n",
+        "#ara ve la part que recordem el producte escalar: mod(v)*mod(u)cos(theta)=v*u\n",
+        "\n",
+        "#nota mental aquest producte ens dona l'angle que formen dos vectors amb el mateix origen, si ens fixem nosaltres volem el complementari a aquest, és a dir pi/2 - theta, lol"
+      ]
     }
   ]
 }
